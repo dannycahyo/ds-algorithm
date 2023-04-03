@@ -34,6 +34,7 @@ function countWordsWithPrefix(words, pref) {
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
+
     const isAccordingPrefix = word.startsWith(pref);
     if (isAccordingPrefix) {
       countedWord++;
