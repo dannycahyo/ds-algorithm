@@ -36,10 +36,6 @@ function memoizedFib(n: number, memo: number[] = []) {
 console.log(memoizedFib(6));
 
 function fibBottomUp(n: number) {
-  if (n < 2) {
-    return n;
-  }
-
   let dp: number[] = [];
   dp[0] = 0;
   dp[1] = 1;
