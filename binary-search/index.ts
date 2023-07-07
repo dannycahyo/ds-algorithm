@@ -1,7 +1,4 @@
 /*
-
-
-
 Searching Algortihms
 
 
@@ -24,11 +21,6 @@ Nums =>
 Target Num => 6
 
 Sorting Algorithm
-
-
-
-
-
 
 
 */
@@ -54,22 +46,8 @@ function linearSearch(nums: number[], target: number): number {
 
 console.log(linearSearch([9, 2, 15, 8, 1, 10, 11, 6], 20));
 
-// Time Complexity  => O(N * N)
-function bubbleSort(nums: number[]): number[] {
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = 0; j < nums.length - i; j++) {
-      if (nums[j] > nums[j + 1]) {
-        [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
-      }
-    }
-  }
-  return nums;
-}
-
-console.log(bubbleSort([9, 2, 15, 8, 1, 10, 11, 6]));
-
 function binarySearch(nums: number[], targetNum: number): number {
-  bubbleSort(nums);
+  nums.sort();
   let left = 0;
   let right = nums.length - 1;
 
