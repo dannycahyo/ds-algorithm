@@ -1,20 +1,17 @@
 class MinHeap {
   heap: number[];
 
-  constructor(array: number[]) {
-    this.heap = array;
+  constructor(nums: number[]) {
+    this.heap = nums;
+    this.buildHeap();
   }
 
-  size() {
-    return this.heap.length - 1;
-  }
-
-  buildHeap(array: number[]) {
-    const firstParentIdx = Math.floor((array.length - 2) / 2);
+  buildHeap() {
+    const firstParentIdx = Math.floor((this.heap.length - 2) / 2);
     for (let currentIdx = firstParentIdx; currentIdx >= 0; currentIdx--) {
-      this.siftDown(currentIdx, array.length - 1);
+      this.siftDown(currentIdx, this.size() - 1);
     }
-    return array;
+    return this.heap;
   }
 
   siftDown(currentIdx: number, endIdx: number) {
@@ -55,15 +52,19 @@ class MinHeap {
   }
 
   remove() {
-    this.swap(0, this.size(), this.heap);
+    this.swap(0, this.size() - 1, this.heap);
     let removedElement = this.heap.pop();
-    this.siftDown(0, this.size());
+    this.siftDown(0, this.size() - 1);
     return removedElement;
   }
 
   insert(value: number) {
     this.heap.push(value);
-    this.siftUp(this.size());
+    this.siftUp(this.size() - 1);
+  }
+
+  size() {
+    return this.heap.length;
   }
 
   swap(i: number, j: number, heap: number[]) {
@@ -74,9 +75,8 @@ class MinHeap {
 const nums = [48, 12, 24, 7, 8, -5, 24, 391, 24, 56, 2, 6, 8, 41];
 
 const minHeap = new MinHeap(nums);
-
 console.log(minHeap.heap);
-minHeap.buildHeap(nums);
+
 console.log(minHeap.heap);
 minHeap.insert(76);
 console.log(minHeap.heap);
