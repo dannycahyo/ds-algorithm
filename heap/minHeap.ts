@@ -12,24 +12,27 @@ class MinHeap {
   buildHeap(array: number[]) {
     const firstParentIdx = Math.floor((array.length - 2) / 2);
     for (let currentIdx = firstParentIdx; currentIdx >= 0; currentIdx--) {
-      this.siftDown(currentIdx, array.length - 1, array);
+      this.siftDown(currentIdx, array.length - 1);
     }
     return array;
   }
 
-  siftDown(currentIdx: number, endIdx: number, heap: number[]) {
+  siftDown(currentIdx: number, endIdx: number) {
     let childOneIdx = currentIdx * 2 + 1;
     while (childOneIdx <= endIdx) {
       const childTwoIdx =
         currentIdx * 2 + 2 <= endIdx ? currentIdx * 2 + 2 : -1;
       let idxToSwap: number;
-      if (childTwoIdx !== -1 && heap[childTwoIdx] < heap[childOneIdx]) {
+      if (
+        childTwoIdx !== -1 &&
+        this.heap[childTwoIdx] < this.heap[childOneIdx]
+      ) {
         idxToSwap = childTwoIdx;
       } else {
         idxToSwap = childOneIdx;
       }
-      if (heap[idxToSwap] < heap[currentIdx]) {
-        this.swap(currentIdx, idxToSwap, heap);
+      if (this.heap[idxToSwap] < this.heap[currentIdx]) {
+        this.swap(currentIdx, idxToSwap, this.heap);
         currentIdx = idxToSwap;
         childOneIdx = currentIdx * 2 + 1;
       } else {
@@ -38,10 +41,10 @@ class MinHeap {
     }
   }
 
-  siftUp(currentIdx: number, heap: number[]) {
+  siftUp(currentIdx: number) {
     let parentIdx = Math.floor((currentIdx - 1) / 2);
-    while (currentIdx > 0 && heap[currentIdx] < heap[parentIdx]) {
-      this.swap(currentIdx, parentIdx, heap);
+    while (currentIdx > 0 && this.heap[currentIdx] < this.heap[parentIdx]) {
+      this.swap(currentIdx, parentIdx, this.heap);
       currentIdx = parentIdx;
       parentIdx = Math.floor((currentIdx - 1) / 2);
     }
@@ -54,13 +57,13 @@ class MinHeap {
   remove() {
     this.swap(0, this.size(), this.heap);
     let removedElement = this.heap.pop();
-    this.siftDown(0, this.size(), this.heap);
+    this.siftDown(0, this.size());
     return removedElement;
   }
 
   insert(value: number) {
     this.heap.push(value);
-    this.siftUp(this.size(), this.heap);
+    this.siftUp(this.size());
   }
 
   swap(i: number, j: number, heap: number[]) {
@@ -79,6 +82,7 @@ minHeap.insert(76);
 console.log(minHeap.heap);
 console.log(minHeap.peek());
 console.log(minHeap.remove());
+console.log(minHeap.heap);
 console.log(minHeap.peek());
 console.log(minHeap.remove());
 console.log(minHeap.heap);
