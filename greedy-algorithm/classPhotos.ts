@@ -25,38 +25,29 @@ Sample Output
 true // Place all students with blue shirts in the back row.
 */
 
+// GREEDY ALGORITHM
+
+// 1. Kita harus paham masalahnya
+// 2. Pilih solusi yang mana
+// 3. Baru kita ngoding
+
 function classPhotos(
   redShirtHeights: number[],
   blueShirtHeights: number[],
 ): boolean {
-  let totalRedShirtsHeights = 0;
-  let totalBlueShirtsHeights = 0;
-
-  redShirtHeights.forEach((num, idx) => {
-    const redShirtHeight = num;
-    const blueShirtHeight = blueShirtHeights[idx];
-    totalRedShirtsHeights += redShirtHeight;
-    totalBlueShirtsHeights += blueShirtHeight;
-  });
-
   redShirtHeights.sort((a, b) => b - a);
   blueShirtHeights.sort((a, b) => b - a);
 
-  const photosFormation: number[][] = [];
+  const shouldInTheFirstRow =
+    blueShirtHeights[0] > redShirtHeights[0] ? "RED" : "BLUE";
 
-  if (totalRedShirtsHeights > totalBlueShirtsHeights) {
-    photosFormation[0] = redShirtHeights;
-    photosFormation[1] = blueShirtHeights;
-  } else {
-    photosFormation[0] = blueShirtHeights;
-    photosFormation[1] = redShirtHeights;
-  }
+  for (let index = 0; index < redShirtHeights.length; index++) {
+    const redShirtStudent = redShirtHeights[index];
+    const blueShirtStudent = blueShirtHeights[index];
 
-  for (let i = 0; i < redShirtHeights.length; i++) {
-    const firstRowHeight = photosFormation[0][i];
-    const secondRowHeight = photosFormation[1][i];
-
-    if (firstRowHeight <= secondRowHeight) {
+    if (shouldInTheFirstRow === "RED") {
+      if (redShirtStudent >= blueShirtStudent) return false;
+    } else if (blueShirtStudent >= redShirtStudent) {
       return false;
     }
   }
@@ -64,4 +55,4 @@ function classPhotos(
   return true;
 }
 
-console.log(classPhotos([5, 8, 1, 3, 4], [6, 9, 2, 4, 5]));
+console.log(classPhotos([6, 9, 2, 4, 5, 1], [5, 8, 1, 3, 4, 9]));
