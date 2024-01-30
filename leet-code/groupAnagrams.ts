@@ -1,9 +1,4 @@
 /*
-
-
-
-
-
 Given an array of strings strs, group the anagrams together. 
 You can return the answer in any order.
 
@@ -23,24 +18,23 @@ Input: strs = ["a"]
 Output: [["a"]]
 */
 
-function groupAnagrams(strs: string[]): string[] {
-  const map = {};
-  const anagrams: string[] = [];
+// TIME COMPLEXITY => O(N)
+// SPACE COMPLEXITY => O(N)
+function groupAnagrams(strs: string[]) {
+  const map = new Map();
 
-  strs.forEach((str) => {
-    const word = str.split("").sort().join("");
-    if (word in map) {
-      map[word].push(str);
+  strs.forEach((string) => {
+    const anagramWord = string.split("").sort().join("");
+
+    if (!map.has(anagramWord)) {
+      map.set(anagramWord, [string]);
     } else {
-      map[word] = [str];
+      const prevMapValue = map.get(anagramWord);
+      map.set(anagramWord, [...prevMapValue, string]);
     }
   });
 
-  for (const key in map) {
-    anagrams.push(map[key]);
-  }
-
-  return anagrams;
+  return Array.from(map.values());
 }
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
