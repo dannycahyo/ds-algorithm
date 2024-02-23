@@ -41,4 +41,30 @@ function commonCharacters(strings: string[]): string[] {
   return Array.from(stringSet);
 }
 
+function commonCharacters2(strings: string[]): string[] {
+  const selectedCharacter: string[] = [];
+  const characterCount: { [character: string]: number } = {};
+
+  for (const string of strings) {
+    const uniqueStringChar = new Set(string);
+    for (const character of uniqueStringChar) {
+      if (!(character in characterCount)) {
+        characterCount[character] = 0;
+      }
+      characterCount[character]++;
+    }
+  }
+
+  const totalString = strings.length;
+
+  for (const key in characterCount) {
+    const totalCharacter = characterCount[key];
+    if (totalCharacter >= totalString) {
+      selectedCharacter.push(key);
+    }
+  }
+
+  return selectedCharacter;
+}
+
 console.log(commonCharacters(["abc", "bcd", "cbaccd"]));
