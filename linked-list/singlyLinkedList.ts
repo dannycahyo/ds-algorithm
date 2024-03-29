@@ -1,3 +1,13 @@
+class Node<T> {
+  public value: T;
+  public next: Node<T> | null;
+
+  constructor(value: T) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 export default class SinglyLinkedList<T> {
   public length: number;
   public head: Node<T> | null;
@@ -135,15 +145,10 @@ export default class SinglyLinkedList<T> {
     this.length--;
     return current.value;
   }
-}
 
-class Node<T> {
-  public value: T;
-  public next: Node<T> | null;
-
-  constructor(value: T) {
-    this.value = value;
-    this.next = null;
+  clear(): void {
+    this.head = null;
+    this.length = 0;
   }
 }
 
