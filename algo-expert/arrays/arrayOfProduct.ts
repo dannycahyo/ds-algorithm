@@ -19,7 +19,23 @@ Sample Output
 20 is equal to 5 x 1 x 4
 */
 
+// O(N ^ 2)
 function arrayOfProducts(array: number[]) {
-  // Write your code here.
-  return array;
+  const results = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let result = 1;
+    for (let j = 0; j < array.length; j++) {
+      const restNum = array[j];
+      if (i !== j) {
+        result *= restNum;
+      }
+    }
+    results.push(result);
+  }
+
+  return results;
 }
+
+const numbers = [5, 1, 4, 2];
+console.log(arrayOfProducts(numbers));
