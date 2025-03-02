@@ -1,4 +1,4 @@
-function maxProfit(prices: number[]): number {
+function getMaximumProfit(prices: number[]): number {
   let minPrice = Infinity;
   let maxProfit = 0;
 
@@ -13,4 +13,4 @@ function maxProfit(prices: number[]): number {
   return maxProfit;
 }
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(getMaximumProfit([7, 1, 5, 3, 6, 4]));
