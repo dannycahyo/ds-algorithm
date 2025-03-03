@@ -1,11 +1,4 @@
 /*
-
-
-
-
-
-
-
 Write a function that takes in a non-empty array of integers and returns the maximum sum
 that can be obtained by summing up all of the integers in a non-empty subarray of the input array.
 A subarray must only contain adjacent numbers (numbers next to each other in the input array).
@@ -24,7 +17,12 @@ F(2) => [3, 5] (8)
 [3] => 
 */
 
-function kadanesAlgorithm(array: number[]) {
+/**
+ * Kadane's algorithm finds the maximum sum subarray in O(n) time
+ * @param array - Input array of integers
+ * @returns The maximum sum that can be obtained by summing a subarray
+ */
+export function kadanesAlgorithm(array: number[]): number {
   let maxEndingHere = array[0];
   let maxSoFar = array[0];
 
@@ -38,6 +36,9 @@ function kadanesAlgorithm(array: number[]) {
   return maxSoFar;
 }
 
+// Debugging purposes
 console.log(
-  kadanesAlgorithm([3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4])
+  kadanesAlgorithm([
+    3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4,
+  ]),
 );
