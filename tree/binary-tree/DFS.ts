@@ -1,3 +1,9 @@
+export interface BinaryNode<T> {
+  value: T;
+  left: BinaryNode<T> | null;
+  right: BinaryNode<T> | null;
+}
+
 /*
         20
        /  \
@@ -8,7 +14,7 @@
     7  29  45
 */
 
-const tree: BinaryNode<number> = {
+export const tree: BinaryNode<number> = {
   value: 20,
   right: {
     value: 50,
@@ -50,7 +56,10 @@ const tree: BinaryNode<number> = {
   },
 };
 
-function traverse(head: BinaryNode<number> | null, needle: number) {
+function traverse(
+  head: BinaryNode<number> | null,
+  needle: number,
+): boolean {
   if (head === null) {
     return false;
   }
@@ -69,4 +78,5 @@ export default function dfs(
   return traverse(head, needle);
 }
 
+// For debugging purposes
 console.log(dfs(tree, 7)); // true
