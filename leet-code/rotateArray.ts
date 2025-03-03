@@ -21,74 +21,63 @@ Explanation:
 rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 
-// PSEUDO CODE =========
-- Init counter to determine when to stop the looping
-- Make a copy of the original array 
-- Looping through the array in reverse order
-    - Pop the last element
-    - Insert the last element into the first position
-- 
 
 */
 
-// https://leetcode.com/problems/rotate-array/description/
+/*
+Index:    0  1  2  3  4  5  6
+Original: 1  2  3  4  5  6  7
+                    ↓
+Rotated:  5  6  7  1  2  3  4
+          ↑     ↑     ↑     ↑
+          |     |     |     |
+Element Movement: Each element moves k=3 positions to the right
+*/
+export function rotateArray(nums: number[], k: number): number[] {
+  if (nums.length <= 1) return nums;
+  const n = nums.length;
+  k = k % n;
 
-// INI SOLUTION FROM TIO
-// function rotateArray(nums: number[], k: number) {
-//   let rotationOffset = k % nums.length;
+  const temp = [...nums];
 
-//   const tail = nums.splice(nums.length - rotationOffset);
-
-//   nums.unshift(...tail);
-//   console.log(nums);
-// }
-
-// function rotateArray(nums: number[], k: number) {
-//   const nLength = nums.length;
-//   const rotate = k % nLength;
-
-//   if (rotate === 0) return;
-
-//   const cutPoint = nLength - rotate;
-
-//   nums.unshift(...nums.splice(cutPoint, rotate));
-// }
-
-var rotateArray = function (nums: number[], k: number) {
-  var i = 0,
-    j = 0,
-    count = 0,
-    carry: number;
-  while (count < nums.length) {
-    i = j;
-    carry = nums[i];
-    do {
-      i = (i + k) % nums.length;
-      [nums[i], carry] = [carry, nums[i]];
-      count++;
-    } while (i !== j);
-    j++;
+  for (let i = 0; i < n; i++) {
+    const idxToRatate = (i + k) % n;
+    nums[idxToRatate] = temp[i];
   }
-};
 
-// [5,6,7,1,2,3,4]
-console.log(rotateArray([1, 2, 3, 4, 5, 6, 7], 8));
+  return nums;
+}
 
-//   const firstArray = nums.slice(0, k + 1);
-//   const secondArray = nums.slice(k + 1, nums.length )
-//   return [...secondArray, ...firstArray]
+// [1, 2, 3, 4, 5, 6, 7] => [5,6,7,1,2,3,4], k = 3
+// [7, 6, 5, 4, 3, 2, 1]
+// - Reverse the firts k element;
+// - Reverse the rest;
+export function rotateArrayII(nums: number[], k: number): number[] {
+  if (nums.length <= 1) return nums;
+  // Reverse all element;
+  nums.reverse();
+  k = k % nums.length;
 
-// function rotateArray(nums: number[], k: number) {
-//   let counter = 0;
-//   const rotateArray = [...nums];
+  let left = 0;
+  let right = k - 1;
 
-//   for (let i = rotateArray.length - 1; i > 0; i--) {
-//     if (counter !== k) {
-//       nums.unshift(rotateArray[i]);
-//       nums.pop();
-//       counter++;
-//     } else {
-//       break;
-//     }
-//   }
-// }
+  while (left < right) {
+    [nums[left], nums[right]] = [nums[right], nums[left]];
+    left++;
+    right--;
+  }
+
+  left = k;
+  right = nums.length - 1;
+
+  while (left < right) {
+    [nums[left], nums[right]] = [nums[right], nums[left]];
+    left++;
+    right--;
+  }
+
+  return nums;
+}
+
+// Removing console.log for testing purposes
+// console.log(rotateArrayII([1, 2], 3));
