@@ -28,21 +28,67 @@ This repository contains my solutions to various Data Structures and Algorithms 
 ds-algorithm/
 ├── tree/
 │   └── binary-tree/
-│       └── invertBinaryTree.ts
+│       ├── DFS.ts
+│       └── DFS.test.ts
 ├── sorting/
 │   ├── mergeSort.ts
 │   └── heapSort.ts
 ├── queue/
 │   └── index.ts
-└── famous-algorithm/
-│   └── kadanesAlgorithm.ts
-└── .....
+├── heap/
+│   ├── minHeap.ts
+│   └── minHeap.test.ts
+├── famous-algorithm/
+│   ├── kadanesAlgorithm.ts
+│   └── kadanesAlgorithm.test.ts
+├── leet-code/
+│   ├── bestTimeToSellStock.ts
+│   └── bestTimeToSellStock.test.ts
+├── types/
+│   └── index.ts
+├── tsconfig.json
+├── vitest.config.ts
+└── ...
 ```
 
 ## 💻 Technologies Used
 
 - TypeScript
 - Node.js
+- Vitest (Testing Framework)
+
+## 🧪 Testing
+
+This project uses Vitest for unit testing. To run tests:
+
+```bash
+# Install dependencies
+npm install
+
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+## 🐞 Debugging
+
+This repository is configured for easy debugging with VS Code:
+
+1. Open the file you want to debug
+2. Set breakpoints where needed
+3. Press F5 or click the "Run and Debug" button
+4. Select the "tsx" configuration
+
+The launch configuration is set up to:
+
+- Use the "tsx" runtime for TypeScript files
+- Display output in the integrated terminal
+- Skip Node.js internals and node_modules in the call stack
 
 ## 📝 Problem Sources
 

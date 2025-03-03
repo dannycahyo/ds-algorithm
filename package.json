@@ -1,0 +1,25 @@
+{
+  "name": "ds-algorithm",
+  "version": "1.0.0",
+  "description": "This repository contains my solutions to various Data Structures and Algorithms (DSA) problems from different platforms like LeetCode, AlgoExpert, and HackerRank. It serves as both a learning resource and a showcase of my problem-solving skills.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "algorithms",
+    "data-structures",
+    "leetcode"
+  ],
+  "author": "dannycahyo",
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "^4.19.3",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.4",
+    "@vitest/coverage-v8": "^0.34.4"
+  }
+}
