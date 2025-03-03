@@ -1,4 +1,8 @@
-class MinHeap {
+/**
+ * MinHeap implementation
+ * A binary tree where the parent node is always smaller than or equal to its children
+ */
+export class MinHeap {
   heap: number[];
 
   constructor(nums: number[]) {
@@ -8,7 +12,11 @@ class MinHeap {
 
   buildHeap() {
     const firstParentIdx = Math.floor((this.heap.length - 2) / 2);
-    for (let currentIdx = firstParentIdx; currentIdx >= 0; currentIdx--) {
+    for (
+      let currentIdx = firstParentIdx;
+      currentIdx >= 0;
+      currentIdx--
+    ) {
       this.siftDown(currentIdx, this.size() - 1);
     }
     return this.heap;
@@ -40,7 +48,10 @@ class MinHeap {
 
   siftUp(currentIdx: number) {
     let parentIdx = Math.floor((currentIdx - 1) / 2);
-    while (currentIdx > 0 && this.heap[currentIdx] < this.heap[parentIdx]) {
+    while (
+      currentIdx > 0 &&
+      this.heap[currentIdx] < this.heap[parentIdx]
+    ) {
       this.swap(currentIdx, parentIdx, this.heap);
       currentIdx = parentIdx;
       parentIdx = Math.floor((currentIdx - 1) / 2);
@@ -72,11 +83,10 @@ class MinHeap {
   }
 }
 
+// For debugging purposes
 const nums = [48, 12, 24, 7, 8, -5, 24, 391, 24, 56, 2, 6, 8, 41];
-
 const minHeap = new MinHeap(nums);
 console.log(minHeap.heap);
-
 console.log(minHeap.heap);
 minHeap.insert(76);
 console.log(minHeap.heap);
