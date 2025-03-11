@@ -68,25 +68,3 @@ export function detectNetwork(cardNumber: string): string {
 
   return "Identity card not found!";
 }
-
-const TEST_CASES = [
-  ["5112345678901234"],
-  ["5212345678901234"],
-  ["5312345678901234"],
-  ["5412345678901234"],
-  ["5512345678901234"],
-  ["4123456789012"],
-  ["4123456789012345"],
-  ["4123456789012345678"],
-  ["38123456789012"],
-  ["341234567890123"],
-  ["371234567890123"],
-];
-
-/* Output
-  
-   */
-
-TEST_CASES.forEach((testCase) => {
-  console.log(detectNetwork(testCase[0]));
-});
