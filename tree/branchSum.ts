@@ -38,7 +38,7 @@ class BinaryTree {
 
 // Binary Tree => Branch Sum
 function calculateBranchSums(
-  root: BinaryTree,
+  root: BinaryTree | null,
   currentSum: number,
   sums: number[],
 ) {
