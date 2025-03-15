@@ -9,10 +9,14 @@ Sample Output
   330 // 75 + 120 + 135
 */
 
-function maxSubsetSumNoAdjacent(array: number[]) {
+export function maxSubsetSumNoAdjacent(array: number[]) {
   const n = array.length;
   if (n === 0) {
     return 0;
+  }
+
+  if (n === 1) {
+    return array[0];
   }
 
   const dp: number[] = new Array(n).fill(0);
